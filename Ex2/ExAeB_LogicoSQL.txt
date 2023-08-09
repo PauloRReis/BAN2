@@ -1,0 +1,59 @@
+A) 
+
+create table Faculdade (FNome varchar[50], Reitor varchar[50], Escritório varchar[50], primary key (FNome));
+
+create table Pessoa (SNN integer, Dnasc date, Sexo varchar[10], Num integer, rua varchar[50], NumApto integer, Cidade varchar[50], Estado varchar[50], CEP integer, PNome varchar[50], MInicial char, UNome varchar[20], primary key (SNN));
+
+create table Instrutor_Pesquisador (SNN integer, primary key (SNN), foreign key (SNN) references pessoa(SNN));		     
+
+create table Docente (SNN integer, SNN_Instrutor_Pesquisador int, Escritorio integer, Categoria varchar[50], Salário float, primary key (SNN), foreign key (SNN) references Pessoa(SNN), foreign key (SNN_Instrutor_Pesquisador) references Instrutor_Pesquisador(SNN));
+
+create table Departamento (DNome varchar[50], Dfone integer, Escritorio varchar[50], SNN_Chefia integer, FNome varchar[50], primary key (DNome), foreign key (SNN_Chefia) references Docente(SNN), foreign key (FNome) references Faculdade(FNome));
+
+create table Pertence (DNome varchar[50], SNN_Docente integer, primary key(DNome, SNN_Docente), foreign key (DNome) references Departamento(DNome), foreign key (SNN_Docente) references Docente(SNN));
+
+create table Curso (Curso_Nome varchar[50], UNome varchar, Curso_Descrição varchar[200], DNome varchar[50], primary key (Curso_Nome), foreign key (DNome) references Departamento(DNome));
+
+create table Aluno (SNN integer, Turma integer, primary key (SNN), DNome varchar[50], DNome_Opta varchar[50], foreign key (SNN) references Pessoa(SNN), foreign key (DNome) references Departamento(DNome), foreign key (DNome_Opta) references Departamento(DNome));
+
+create table Aluno_grad (SNN integer, faculdade varchar[100], grau integer, ano integer, primary key (SNN), foreign key (SNN) references Aluno(SNN));
+
+create table Orientador (SNN_Docente integer, SNN_Aluno_grad integer, primary key (SNN_Aluno_grad), foreign key (SNN_Docente) references Docente(SNN),  foreign key (SNN_Aluno_grad) references Aluno_grad(SNN));
+			
+create table Banca (SNN_Docente integer, SNN_Aluno_grad integer, primary key (SNN_Docente, SNN_Aluno_grad), foreign key (SNN_Docente) references Docente(SNN), foreign key (SNN_Aluno_grad) references Aluno_grad(SNN));
+
+create table Disciplina (Disciplina_Nome varchar[50], Ano integer, Trimestre integer, SNN_Inst_Pesq integer, primary key (Disciplina_Nome), foreign key (SNN_Inst_Pesq) references Instrutor_Pesquisador(SNN));
+
+create table Disciplina_Corrente (Disciplina_Nome varchar[50], Ano integer, Trimestre integer, SNN_Inst_Pesq integer, primary key (Disciplina_Nome));
+
+create table Bolsa (Num integer, Titulo varchar[50], Agencia integer, DataIn date, primary key (Num));
+
+create table IP (SNN_Docente integer, Num_Bolsa integer, primary key (SNN_Docente, Num_Bolsa), foreign key (SNN_Docente) references Docente(SNN), foreign key (Num_Bolsa) references Bolsa(Num));
+
+create table Subsidio (SNN_Inst_Pesq integer, Num_Bolsa integer, Inicio date, Prazo integer, Fim date, primary key (SNN_Inst_Pesq, Num_Bolsa), foreign key (SNN_Inst_Pesq) references Instrutor_Pesquisador(SNN), foreign key (Num_Bolsa) references Bolsa(Num));
+
+create table Registrado (Disciplina_Nome varchar[50], SNN_Aluno integer, primary key(Disciplina_Nome, SNN_Aluno), foreign key (Disciplina_Nome) references Disciplina_Corrente(Disciplina_Nome), foreign key (SNN_Aluno) references Aluno(SNN));
+
+create table Histórico (Nota float, Disciplina_Nome varchar[50], SNN_Aluno integer, primary key (Disciplina_Nome, SNN_Aluno), foreign key (Disciplina_Nome) references Disciplina(Disciplina_Nome), foreign key (SNN_Aluno) references Aluno(SNN));
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+B)
+
+create table Semen (Tipo varchar[100], Característica varchar[100], primary key (Tipo));
+
+create table Curral (Número integer, localização varchar[40], primary key (Número));
+
+create table Veterinario (CRM integer, Nome varchar[100], Convênio varchar[100], primary key (CRM));
+
+create table Animal (ID integer, Nome varchar[50], Raça varchar[50], Sexo varchar[10], Flag_Matriz bit, Número_Curral integer, Flag_Reprodutor_Adquirido bit, Nome_Pai varchar[50], Nome_Mãe varchar[50], Valor float, Flag_Reprodutor_Cria bit, Desmame date, Geração date, primary key (ID), foreign key (Número_Curral) references Curral(Número));
+
+create table Consulta (Data_Consulta date, Resultado varchar[200], CRM integer, ID integer, primary key(Data_Consulta, CRM, ID), foreign key (CRM) references Veterinário(CRM), foreign key (ID) references Animal(ID));
+
+create table Tratamento (Data_Tratamento date, Descrição varchar[200], Data_Consulta date, CRM integer, ID integer, primary key(Data_Tratamento, Data_Consulta, CRM, ID), foreign key (Data_Consulta, CRM, ID) references Consulta(Data_Consulta, CRM, ID));
+
+create table Sequência (Consulta_Atual date, CRM_Atual integer, ID_Atual integer, Consulta_Prox date, CRM_Prox integer, ID_Prox integer, primary key(Consulta_Atual, Consulta_Prox, CRM_Atual, CRM_Prox, ID_Atual, ID_Prox), foreign key (Consulta_Atual, CRM_Atual, ID_Atual) references Consulta(Data_Consulta, CRM, ID), foreign key (Consulta_Prox, CRM_Prox, ID_Prox) references Consulta(Data_Consulta, CRM, ID));
+
+create table Inseminação (ID_Matriz integer,  Tipo_Sêmen varchar[100], primary key (ID_Matriz, Tipo_Sêmen), foreign key (ID_Matriz) references Animal(ID), foreign key (Tipo_Sêmen) references Sêmen(Tipo));
+
+create table Cobertura (ID_Matriz integer, ID_Reprodutor integer, primary key (ID_Matriz, ID_Reprodutor), foreign key (ID_Matriz) references Animal(ID), foreign key (ID_Reprodutor) references Animal(ID));
