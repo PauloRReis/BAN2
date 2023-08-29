@@ -1,0 +1,51 @@
+--1)
+
+create view view_mec_nome_func
+as (select m.nome, m.funcao from mecanico m)
+
+--drop view view_mec_nome_func
+
+--2)
+create view view_modelo_marca_veiculo
+as (select v.modelo, v.marca from veiculo v)
+
+--drop view view_modelo_marca_veiculo
+
+--3)
+create view view_data_nome_conserto_mec_cliente
+as (select m.nome, c.nome, v.modelo, con.data, con.hora
+    from cliente c join veiculo v using (codc)
+    join conserto con using(codv) join mecanico m using(codm))
+    
+--drop view view_data_nome_conserto_mec_cliente
+
+--4)
+create view view_ano_km_veiculo
+as (select v.ano, avg(v.quilometragem) from veiculo v
+    group by v.ano)
+
+--drop view view_ano_km_veiculo
+
+--5)
+create view view_nome_totalconsertos_mec
+as (select m.nome, COUNT(m.codm), c.data from mecanico m
+    join conserto c using(codm) group by codm,data)
+    
+--drop view view_nome_totalconsertos_mec
+
+-- 6)
+CREATE VIEW view_consertos_setores
+AS (SELECT s.nome, con.data, COUNT(s.cods) AS total_consertos FROM setor AS s JOIN mecanico as mec USING (cods) JOIN conserto as con USING(codm) GROUP BY (s.cods, con.data));
+
+-- 7)
+CREATE VIEW view_mecanicos_por_funcoes
+AS (SELECT mec.funcao, COUNT(mec.nome) AS numero_mecanicos FROM mecanico as mec GROUP BY (mec.funcao));
+
+-- 8)
+CREATE VIEW view_mecanicos_e_setores
+AS (SELECT mec.nome AS nome_mecanico, mec.funcao AS funcao_mecanico, se.cods AS numero_setor, se.nome AS nome_setor FROM mecanico AS mec LEFT JOIN setor AS se USING(cods));
+
+-- 9) 
+CREATE VIEW vies_consertos_por_funcao 
+AS (SELECT mec.funcao AS funcao_mecanico, COUNT(mec.funcao) AS numero_consertos FROM mecanico AS mec JOIN conserto USING(codm) GROUP BY (mec.funcao));
+
