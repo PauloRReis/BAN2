@@ -1,0 +1,35 @@
+--1. Gatilho para estudante não ser seu proprio conselheiro
+CREATE OR REPLACE FUNCTION verifica_conselheiro() RETURNS TRIGGER AS 
+$$
+BEGIN
+    IF NEW.estudante_conselheiro = NEW.nro_matricula THEN
+        RAISE EXCEPTION 'Um estudante não pode ser seu próprio conselheiro!';
+    END IF;
+    RETURN NEW;
+END;
+$$ 
+LANGUAGE plpgsql;
+
+CREATE TRIGGER estudante_check_conselheiro BEFORE INSERT OR UPDATE ON estudante FOR EACH ROW
+EXECUTE PROCEDURE verifica_conselheiro();
+
+
+--2. Gatilho para se dois estudantes estão tentando ser conselheiros um do outro
+
+CREATE OR REPLACE FUNCTION verifica_conselheiros() RETURNS TRIGGER AS 
+$$
+BEGIN
+    IF (
+        NEW.estudante_conselheiro IS NOT NULL AND
+        EXISTS (SELECT 1 FROM estudante WHERE nro_matricula = NEW.estudante_conselheiro AND estudante_conselheiro = NEW.nro_matricula)
+    ) THEN
+        RAISE EXCEPTION 'Dois estudantes não podem ser conselheiros um do outro!';
+    END IF;
+
+    RETURN NEW;
+END;
+$$ 
+LANGUAGE plpgsql;
+
+CREATE TRIGGER estudante_check_conselheiros BEFORE INSERT OR UPDATE ON estudante FOR EACH ROW 
+EXECUTE PROCEDURE verifica_conselheiros();
