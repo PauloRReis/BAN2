@@ -1,4 +1,70 @@
---1. Gatilho para estudante não ser seu proprio conselheiro
+--  1. Gatilho para garantir datas de projeto válidas. Este gatilho verifica se a data de início de um projeto é anterior à data de término.
+
+CREATE OR REPLACE FUNCTION verifica_datas_projeto() RETURNS TRIGGER AS 
+$$
+BEGIN
+    IF NEW.data_ini >= NEW.data_fim THEN
+        RAISE EXCEPTION 'A data de início deve ser anterior à data de término do projeto!';
+    END IF;
+    RETURN NEW;
+END;
+$$ 
+LANGUAGE plpgsql;
+
+CREATE TRIGGER projeto_check_datas BEFORE INSERT OR UPDATE ON projeto FOR EACH ROW
+EXECUTE PROCEDURE verifica_datas_projeto();
+
+
+-- 2.  Gatilho para evitar conflito de datas em projetos. Este gatilho verifica se um professor já está envolvido em outro projeto que ocorre durante as mesmas datas.
+
+CREATE OR REPLACE FUNCTION verifica_conflito_datas_projeto() RETURNS TRIGGER AS 
+$$
+DECLARE
+    outro_projeto_id INTEGER;
+BEGIN
+    SELECT nro_projeto INTO outro_projeto_id
+    FROM projeto
+    WHERE professor_pesquisador = NEW.professor_pesquisador
+    AND (NEW.data_ini BETWEEN data_ini AND data_fim OR NEW.data_fim BETWEEN data_ini AND data_fim);
+    
+    IF outro_projeto_id IS NOT NULL THEN
+        RAISE EXCEPTION 'O professor já está envolvido em outro projeto durante as mesmas datas!';
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ 
+LANGUAGE plpgsql;
+
+CREATE TRIGGER projeto_check_conflito_datas BEFORE INSERT OR UPDATE ON projeto FOR EACH ROW
+EXECUTE PROCEDURE verifica_conflito_datas_projeto();
+
+
+--  3.Gatilho para impedir que estudantes se inscrevam em cursos de departamentos diferentes. Este gatilho verifica se o departamento do curso selecionado é o mesmo do estudante.
+
+CREATE OR REPLACE FUNCTION verifica_departamento_curso_estudante() RETURNS TRIGGER AS 
+$$
+BEGIN
+    DECLARE curso_departamento INTEGER;
+    
+    SELECT nro_departamento INTO curso_departamento
+    FROM curso
+    WHERE cod_curso = NEW.cod_curso;
+    
+    IF curso_departamento <> NEW.cod_departamento THEN
+        RAISE EXCEPTION 'O estudante só pode se inscrever em cursos de seu próprio departamento!';
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ 
+LANGUAGE plpgsql;
+
+CREATE TRIGGER estudante_check_departamento_curso BEFORE INSERT OR UPDATE ON estudante FOR EACH ROW
+EXECUTE PROCEDURE verifica_departamento_curso_estudante();
+
+--  4. Gatilho para estudante não ser seu proprio conselheiro
+
 CREATE OR REPLACE FUNCTION verifica_conselheiro() RETURNS TRIGGER AS 
 $$
 BEGIN
@@ -14,7 +80,7 @@ CREATE TRIGGER estudante_check_conselheiro BEFORE INSERT OR UPDATE ON estudante 
 EXECUTE PROCEDURE verifica_conselheiro();
 
 
---2. Gatilho para se dois estudantes estão tentando ser conselheiros um do outro
+--  5. Gatilho para se dois estudantes estão tentando ser conselheiros um do outro
 
 CREATE OR REPLACE FUNCTION verifica_conselheiros() RETURNS TRIGGER AS 
 $$
