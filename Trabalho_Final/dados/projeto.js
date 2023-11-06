@@ -1,12 +1,16 @@
 class projeto{
     constructor(nome, orgao_financiador, data_ini, data_fim, orcamento, professor_pesquisador){
-        //this.nro_projeto = projeto;
+        this.nro_projeto = nro_projeto;
         this.nome = nome;
         this.orgao_financiador = orgao_financiador;
         this.data_ini = data_ini;
         this.data_fim = data_fim;
         this.orcamento = orcamento
         this.professor_pesquisador = professor_pesquisador;
+    }
+
+    getNro(){
+        return this.nro_projeto;
     }
 
     getNome(){

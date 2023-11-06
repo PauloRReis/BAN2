@@ -1,8 +1,12 @@
 class curso{
     constructor(nome, nro_departamento){
-        //this.cod_curso = curso;
+        this.cod_curso = cod_curso;
         this.nome = nome;
         this.nro_departamento = nro_departamento;
+    }
+
+    getCodCurso(){
+        return this.cod_curso;
     }
 
     getNome(){
