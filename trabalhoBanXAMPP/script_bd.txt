@@ -1,0 +1,68 @@
+CREATE TABLE IF NOT EXISTS "departamento"(
+	"nro_departamento" SERIAL NOT NULL,
+	"nome" varchar(50),
+	"escritorio" varchar(50),
+	primary KEY(nro_departamento)
+);
+
+CREATE TABLE IF NOT EXISTS "curso"(
+	"cod_curso" SERIAL NOT NULL,
+	"nome" varchar(50),
+	"nro_departamento" int,
+	PRIMARY KEY(cod_curso),
+	foreign key (nro_departamento) references departamento(nro_departamento)
+);
+
+CREATE TABLE IF NOT EXISTS "professor"(
+	"nro_matricula" SERIAL NOT NULL,
+	"nome" varchar(50),
+	"idade" integer,
+	"sala" varchar(4),
+	"especialidade_pesquisa" varchar(50),
+	"prof_departamento" int,
+	PRIMARY KEY(nro_matricula),
+	foreign key(prof_departamento) references departamento(nro_departamento)
+);
+
+CREATE TABLE IF NOT EXISTS "projeto"(
+	"nro_projeto" SERIAL NOT NULL,
+	"nome" VARCHAR(50),
+	"orgao_financiador" VARCHAR(50),
+	"data_ini" DATE,
+	"data_fim" DATE,
+	"orcamento" FLOAT,
+	"professor_pesquisador" int,
+	PRIMARY KEY(nro_projeto),
+	foreign key(professor_pesquisador) references professor(nro_matricula)
+);
+
+CREATE TABLE IF NOT EXISTS "estudante"(
+	"nro_matricula" SERIAL NOT NULL,
+	"nome" VARCHAR(50),
+	"idade" INTEGER,
+	"cod_curso" int,
+	"prof_supervisor" int,
+	"estudante_conselheiro" int,
+	PRIMARY KEY (nro_matricula),
+	foreign key (cod_curso) references curso(cod_curso),
+	foreign key(prof_supervisor) references professor(nro_matricula),
+	foreign key(estudante_conselheiro) references estudante(nro_matricula)
+);
+
+CREATE TABLE IF NOT EXISTS "participacao_prof_projeto"(
+	"id_participacao_prof_projeto" SERIAL NOT NULL,
+	"nro_matricula" int,
+	"nro_projeto" int,
+	PRIMARY KEY (id_participacao_prof_projeto),
+	foreign key (nro_matricula) references professor(nro_matricula),
+	foreign key (nro_projeto) references projeto(nro_projeto)
+);
+
+CREATE TABLE IF NOT EXISTS "estudante_projeto"(
+	"id_estudante_projeto" SERIAL NOT NULL,
+	"nro_projeto" int,
+	"nro_matricula" int,
+	PRIMARY KEY (id_estudante_projeto),
+	foreign key (nro_projeto) references projeto(nro_projeto),
+	foreign key (nro_matricula) references estudante(nro_matricula)
+);

@@ -14,7 +14,8 @@ $localhost = conectar();
 
 $d1 = 'universidade';
 if($_POST['op'] == "0"){ // SELECT
-    $sql = "SELECT * FROM $d1.projeto";
+    //$sql = "SELECT * FROM $d1.projeto";
+    $sql = "SELECT $d1.p.nro_projeto, $d1.p.nome, $d1.p.orgao_financiador, $d1.p.data_ini, $d1.p.data_fim, $d1.p.orcamento, $d1.prof.nome FROM $d1.projeto p JOIN $d1.professor prof ON $d1.p.professor_pesquisador = $d1.prof.nro_matricula";
     $r1 = $localhost->query($sql);
     $res = array();
     while ($r = $r1->fetch_array()){
@@ -51,6 +52,11 @@ if($_POST['op'] == "0"){ // SELECT
     
     die($idINS."^".$d[0]."^".$d[1]."^".$d[2]."^".$d[3]."^".$d[4]."^".$d[5]);
 
+}else if($_POST['op'] == "2"){ /* UPDADE */
+    $d = explode("^", $_POST['dados']);
+
+    $sql = "UPDATE $d1.projeto SET nome='".$d[1]."',orgao_financiador='".$d[2]."', orcamento = ".$d[5]." WHERE projeto.nro_projeto =".$_POST['m'];
+    $localhost->query($sql);
 }
 
 $localhost->close();

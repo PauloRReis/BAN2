@@ -15,7 +15,8 @@
 
     $d1 = 'universidade';
     if($_POST['op'] == "0"){ //SELECT
-        $sql = "SELECT * FROM $d1.curso";
+        //$sql = "SELECT * FROM $d1.curso";
+        $sql = "SELECT $d1.c.cod_curso, $d1.c.nome, $d1.d.nome AS nro_departamento FROM $d1.curso c JOIN $d1.departamento d ON $d1.c.nro_departamento = $d1.d.nro_departamento";
         $r1 = $localhost->query($sql);
         $res = array();
         while($row = $r1->fetch_array()){
@@ -38,7 +39,7 @@
         die($idINS."^".$d[0]."^".$d[1]);
     }elseif($_POST["op"] == "2"){ //UPDATE
         $d = explode("^", $_POST["dados"]);
-        $sql = "UPDATE $d1.curso SET nome='".$d[0]." WHERE cod_curso =".$_POST['m'];
+        $sql = "UPDATE $d1.curso SET nome='".$d[1]."' WHERE cod_curso =".$_POST['m'];
         $localhost->query($sql);
     }
 

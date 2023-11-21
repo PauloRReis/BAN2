@@ -15,7 +15,8 @@ $localhost = conectar();
 
 $d1 = 'universidade';
 if($_POST['op'] == "0"){ //SELECT
-    $sql = "SELECT * FROM $d1.estudante";
+    //$sql = "SELECT * FROM $d1.estudante";
+    $sql = "SELECT $d1.e.nro_matricula, $d1.e.nome , $d1.e.idade, $d1.c.nome AS cod_curso, $d1.p_supervisor.nome AS professor_supervisor, $d1.p_conselheiro.nome AS estudante_conselheiro FROM $d1.estudante e JOIN $d1.curso c ON $d1.e.cod_curso = $d1.c.cod_curso JOIN $d1.professor p_supervisor ON $d1.e.prof_supervisor = $d1.p_supervisor.nro_matricula LEFT JOIN $d1.estudante p_conselheiro ON $d1.e.estudante_conselheiro = $d1.p_conselheiro.nro_matricula; ";
     $r1 = $localhost->query($sql);
     $res = array();
     while($row = $r1->fetch_array()){
@@ -41,7 +42,7 @@ if($_POST['op'] == "0"){ //SELECT
 
     $ac = ($d[2] != "") ? "aconselhador=".$d[2]."" : "";
 
-    $sql = "UPDATE $d1.estudante SET nome='".$d[0]."', idade=".$d[1].", cod_curso".$d[2].", prof_supervisor=".$d[4].", ".$ac." WHERE nro_matricula =".$_POST['m'];
+    $sql = "UPDATE $d1.estudante SET nome='".$d[1]."', idade=".$d[2]." WHERE nro_matricula =".$_POST['m'];
     $localhost->query($sql);
 }
 

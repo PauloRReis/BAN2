@@ -50,10 +50,17 @@
       <div class="u-popup-main">
           <div class="u-popup-top">Atualizar Curso <i class='u-closed-pop bx bx-x'></i></div>
           <div class="u-popup-body">
-              <input id='idcurso' type="hidden"> <!-- ARMAZENA O ID -->
+              <div class="u-input">
+                <label>ID:</label>
+                <input disabled="" id='idcurso' type="text" placeholder="Id">
+              </div>
               <div class="u-input">
                   <label>Nome:</label>
                   <input id='nomecurso' type="text" placeholder="Nome"> <!-- ARMAZENA O NOME -->
+              </div>
+              <div class="u-input">
+                <label>Departamento:</label>
+                <input disabled="" id='nro_departamento' type="text" placeholder="departamento">
               </div>
           </div>
           <div class="u-popup-footer">
@@ -67,39 +74,34 @@
       <div class="u-popup-main">
           <div class="u-popup-top">Atualizar Departamento <i class='u-closed-pop bx bx-x'></i></div>
           <div class="u-popup-body">
-              <div class="u-tab-menu-d">
-                  <div class="u-tab-d u-tab-act">Info</div>					
-                  <div class="u-tab-d">Professores</div>
-              </div>
-              <div class="u-pop-tab-d u-popup-tab-act">
-                  <input id='iddepartamento' type="hidden"> <!-- ARMAZENA O ID -->
-                  <div class="u-input">
-                      <label>Nome:</label>
-                      <input id='nomedepartamento' type="text" placeholder="Nome"> <!-- ARMAZENA O Nome -->
-                  </div>
-                  <div class="u-input">
-                      <label>Escritorio:</label>
-                      <input id='escritoriodepartamento' type="text" placeholder="Escritorio"> <!-- ARMAZENA O Escritorio -->
-                  </div>
-              </div>
+            <div class="u-input">
+                <label>ID:</label>
+                <input disabled="" id='iddepartamento' type="text" placeholder="Id">
+            </div>
+            <div class="u-input">
+                <label>Nome:</label>
+                <input id='nomedepartamento' type="text" placeholder="Nome"> <!-- ARMAZENA O Nome -->
+            </div>
+            <div class="u-input">
+                <label>Escritorio:</label>
+                <input id='escritoriodepartamento' type="text" placeholder="Escritorio"> <!-- ARMAZENA O Escritorio -->
+            </div>
           </div>
           <div class="u-popup-footer">
-              <div class="u-tab-btn-d">
-                  <button class="u-popup-att u-popup-btn">Atualizar</button>
-              </div>
-              <div class="u-tab-btn-d" style="display: none;">
-                  <button id="DepartamentoProf" class="u-popup-btn">Cadastrar</button>
-              </div>
-          </div>
+                <button class="u-popup-att u-popup-btn">Atualizar</button>
+            </div>
+        </div>
       </div>
-    </div>
     
     <!--POPUP ESTUDANTE-->
     <div id='estudantePop' class='u-popup'>
       <div class="u-popup-main">
           <div class="u-popup-top">Atualizar Estudantes <i class='u-closed-pop bx bx-x'></i></div>
           <div class="u-popup-body">
-              <input id='idestudante' type="hidden"> <!-- ARMAZENA O ID -->
+            <div class="u-input">
+                <label>ID:</label>
+                <input disabled="" id='idestudante' type="text" placeholder="Id">
+              </div>
               <div class="u-input">
                   <label>Nome:</label>
                   <input id='nomeestudante' type="text" placeholder="Nome"> <!-- ARMAZENA O NOME -->
@@ -107,6 +109,18 @@
               <div class="u-input">
                   <label>Idade:</label>
                   <input id='idadeestudante' type="text" placeholder="Idade"> <!-- ARMAZENA a IDADE -->
+              </div>
+              <div class="u-input">
+                <label>Curso:</label>
+                <input disabled="" id='cursoestudante' type="text" placeholder="Curso">
+              </div>
+              <div class="u-input">
+                <label>Supervisor:</label>
+                <input disabled="" id='profsupervisor' type="text" placeholder="Supervisor">
+              </div>
+              <div class="u-input">
+                <label>Aconselhador:</label>
+                <input disabled="" id='aconselhadorestudante' type="text" placeholder="Aconselhador">
               </div>
           </div>
           <div class="u-popup-footer">
@@ -120,7 +134,10 @@
       <div class="u-popup-main">
           <div class="u-popup-top">Atualizar Professor <i class='u-closed-pop bx bx-x'></i></div>
           <div class="u-popup-body">
-              <input id='idprofessor' type="hidden"> <!-- ARMAZENA O ID -->
+              <div class="u-input">
+                <label>ID:</label>
+                <input disabled="" id='idprofessor' type="text" placeholder="Id">
+              </div>
               <div class="u-input">
                   <label>Nome:</label>
                   <input id='nomeprofessor' type="text" placeholder="Nome"> <!-- ARMAZENA O NOME -->
@@ -137,6 +154,10 @@
                   <label>Especialidade:</label>
                   <input id='especialidadeprofessor' type="text" placeholder="Especialidade"> <!-- ARMAZENA O Especialidade -->
               </div>
+              <div class="u-input">
+                <label>Departamento:</label>
+                <input disabled="" id='departamento_professor' type="text" placeholder="Departamento">
+              </div>
           </div>
           <div class="u-popup-footer">
               <button class="u-popup-att u-popup-btn">Atualizar</button>
@@ -149,20 +170,18 @@
       <div class="u-popup-main">
           <div class="u-popup-top">Atualizar Projetos <i class='u-closed-pop bx bx-x'></i></div>
           <div class="u-popup-body">
-              <div class="u-popup-menu">
-                  <div class="u-tab u-tab-act">Info</div>
-                  <div class="u-tab">Estudantes</div>
-                  <div class="u-tab">Professores</div>
-              </div>
               <div class="u-popup-tab u-popup-tab-act">
-                  <input id='idprojeto' type="hidden"> <!-- ARMAZENA O ID -->
+                  <div class="u-input">
+                      <label>ID:</label>
+                      <input disabled="" id='idprojeto' type="text" placeholder="Id"> <!-- ARMAZENA O NOME -->
+                  </div>
                   <div class="u-input">
                       <label>Nome:</label>
-                      <input disabled="" id='nomeprojeto' type="text" placeholder="Nome"> <!-- ARMAZENA O NOME -->
+                      <input id='nomeprojeto' type="text" placeholder="Nome"> <!-- ARMAZENA O NOME -->
                   </div>
                   <div class="u-input">
                       <label>Orgao:</label>
-                      <input disabled="" id='orgaoprojeto' type="text" placeholder="Orgao"> <!-- ARMAZENA a Orgao -->
+                      <input id='orgaoprojeto' type="text" placeholder="Orgao"> <!-- ARMAZENA a Orgao -->
                   </div>
                   <div class="u-input">
                       <label>Inicio:</label>
@@ -174,47 +193,17 @@
                   </div>
                   <div class="u-input">
                       <label>Orçamento:</label>
-                      <input disabled="" id='orcamentoprojeto' type="text" placeholder="orçamento"> <!-- ARMAZENA a orcamento -->
+                      <input id='orcamentoprojeto' type="text" placeholder="orçamento"> <!-- ARMAZENA a orcamento -->
                   </div>
                   <div class="u-input">
                       <label>pesquisador:</label>
                       <input disabled="" id='pesquisadorprojeto' type="text" placeholder="Pesquisador"> <!-- ARMAZENA a pesquisador -->
                   </div>
               </div>
-              <div id="EstProj" class="u-popup-tab">
-                  <div class="u-tab-form">
-                      <div id="selEstProj" class="u-select">
-                          <label>Estudante:</label>
-                          <select ></select>
-                      </div>
-                      <div class="u-select">
-                          <label>Orientador:</label>
-                          <select id="selOriProj"></select>
-                      </div>
-                  </div>
-                  <div class="u-dados"></div>
-              </div>
-              <div id='ProfProj' class="u-popup-tab">
-                  <div class="u-tab-form">
-                      <div class="u-select">
-                          <label>Professor:</label>
-                          <select id="selProfProj"></select>
-                      </div>
-                  </div>
-                  <div class="u-dados"></div>
-              </div>
           </div>
           <div class="u-popup-footer">
-              <div class="u-tab-btn">
-                  <button class="u-popup-att u-popup-btn" style="display: none;">Atualizar</button>
-              </div>
-              <div class="u-tab-btn" style="display: none;">
-                  <button id="EstudanteProj" class="u-popup-btn">Cadastrar</button>
-              </div>				
-              <div class="u-tab-btn" style="display: none;">
-                  <button id="ProfessorProj" class="u-popup-btn">Cadastrar</button>
-              </div>				
-          </div>
+            <button class="u-popup-att u-popup-btn">Atualizar</button>
+        </div>
       </div>
     </div>
 

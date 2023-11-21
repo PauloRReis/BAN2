@@ -13,8 +13,19 @@ include("conexao.php");
 $localhost = conectar();
 
 $d1 = 'universidade';
+
+function console_log($output, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+    ');';
+    if ($with_script_tags) {
+    $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
+
 if($_POST['op'] == "0"){ // SELECT
-    $sql = "SELECT * FROM $d1.professor";
+    //$sql = "SELECT * FROM $d1.professor";
+    $sql = "SELECT $d1.p.nro_matricula, $d1.p.nome, $d1.p.idade, $d1.p.sala, $d1.p.especialidade_pesquisa, $d1.d.nome AS prof_departamento FROM $d1.professor p JOIN $d1.departamento d ON $d1.p.prof_departamento = $d1.d.nro_departamento";
     $r1 = $localhost->query($sql);
     $res = array();
     while ($r = $r1->fetch_array()){
@@ -41,7 +52,7 @@ if($_POST['op'] == "0"){ // SELECT
 
 }else if($_POST['op'] == "2"){ /* UPDADE */
     $d = explode("^", $_POST['dados']);
-    $sql = "UPDATE $d1.professor SET nome='".$d[0]."',idade=".$d[1].", sala='".$d[2]."', especialidade = '".$d[3]."'   WHERE mat_prof =".$_POST['m'];
+    $sql = "UPDATE $d1.professor SET nome='".$d[1]."',idade=".$d[2].", sala='".$d[3]."', especialidade_pesquisa = '".$d[4]."' WHERE professor.nro_matricula =".$_POST['m'];
     $localhost->query($sql);
 }
 

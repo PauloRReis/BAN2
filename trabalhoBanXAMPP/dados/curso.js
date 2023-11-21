@@ -19,7 +19,6 @@ export class Curso {
     getArray(){
         return [this.cod_curso, this.nome, this. nro_departamento];
     }
-
     update(str){
         const d = str.split("^");
 
