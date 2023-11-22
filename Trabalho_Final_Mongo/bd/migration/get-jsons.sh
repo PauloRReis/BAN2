@@ -2,8 +2,8 @@
 
 PG_HOST="localhost"
 PG_PORT="5432"
-PG_USER="admin"
-PG_DB="airport"
+PG_USER="postgres"
+PG_DB="postgres"
 
 read -s -p "Enter password for PostgreSQL: " PG_PASSWORD
 echo

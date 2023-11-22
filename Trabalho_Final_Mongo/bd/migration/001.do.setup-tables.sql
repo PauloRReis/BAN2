@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS "departamento"(
 CREATE TABLE IF NOT EXISTS "curso"(
 	"cod_curso" CHAR(24) PRIMARY KEY DEFAULT generate_object_id(),
 	"nome" varchar(50),
-	"nro_departamento" int,
+	"nro_departamento" CHAR(24),
 
 	foreign key (nro_departamento) references "departamento"
 );
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "professor"(
 	"idade" integer,
 	"sala" varchar(4),
 	"especialidade_pesquisa" varchar(50),
-	"prof_departamento" int,
+	"prof_departamento" CHAR(24),
 
 	foreign key(prof_departamento) references "departamento"
 );
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS "projeto"(
 	"data_ini" DATE,
 	"data_fim" DATE,
 	"orcamento" FLOAT,
-	"professor_pesquisador" int,
+	"professor_pesquisador" CHAR(24),
 
 	foreign key(professor_pesquisador) references "professor"
 );

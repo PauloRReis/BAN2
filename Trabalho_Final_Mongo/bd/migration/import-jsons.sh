@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MONGO_DB="airport"
+MONGO_DB="universidade"
 
 for json_file in mongo/*.json; do
   collection_name=$(basename "$json_file" .json)

@@ -1,1 +1,1 @@
-SELECT (json_build_object('_id',id,'nome',nome,'idade',idade,'cod_curso',cod_curso,'prof_supervisor',prof_supervisor,'estudante_conselheiro',estudante_conselheiro,'curso',curso,'professor',professor,'estudante',estudante)) AS estudante FROM estudante;
+SELECT (json_build_object('_id',nro_matricula,'nome',nome,'idade',idade,'cod_curso',cod_curso,'prof_supervisor',prof_supervisor,'estudante_conselheiro',estudante_conselheiro)) AS estudante FROM estudante;

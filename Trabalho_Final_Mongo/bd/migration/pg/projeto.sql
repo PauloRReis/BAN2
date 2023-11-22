@@ -1,1 +1,1 @@
-SELECT (json_build_object('_id',id,'nome',nome,'orgao_financiador',orgao_financiador,'data_ini',data_ini,'data_fim',data_fim,'orcamento',orcamento,'professor_pesquisador',professor_pesquisador,'professor',professor)) AS projeto FROM projeto;
+SELECT (json_build_object('_id',nro_projeto,'nome',nome,'orgao_financiador',orgao_financiador,'data_ini',data_ini,'data_fim',data_fim,'orcamento',orcamento,'professor_pesquisador',professor_pesquisador)) AS projeto FROM projeto;

@@ -1,0 +1,4 @@
+ {"_id" : "1                       ", "nome" : "Joao da Silva", "idade" : 25, "cod_curso" : "4                       ", "prof_supervisor" : "1                       ", "estudante_conselheiro" : null}
+ {"_id" : "9                       ", "nome" : "Jose Pinto", "idade" : 45, "cod_curso" : "5                       ", "prof_supervisor" : "2                       ", "estudante_conselheiro" : "1                       "}
+ {"_id" : "10                      ", "nome" : "Guilherme ", "idade" : 30, "cod_curso" : "6                       ", "prof_supervisor" : "1                       ", "estudante_conselheiro" : "9                       "}
+
