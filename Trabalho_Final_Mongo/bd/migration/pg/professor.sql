@@ -1,0 +1,1 @@
+SELECT (json_build_object('_id',id,'nome',nome,'idade',idade,'sala',sala,'especialidade_pesquisa',especialidade_pesquisa,'prof_departamento',prof_departamento,'departamento',departamento)) AS professor FROM professor;

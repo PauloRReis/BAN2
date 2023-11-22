@@ -1,0 +1,27 @@
+INSERT INTO `curso` (`cod_curso`, `nome`, `nro_departamento`) VALUES
+(4, 'Ciencia da Computação', 1),
+(5, 'Direito', 3),
+(6, 'Engenharia Civil', 4);
+
+INSERT INTO `departamento` (`nro_departamento`, `nome`, `escritorio`) VALUES
+(1, 'Departamento de Tecnologias', 303),
+(3, 'Departamento Direito', 301),
+(4, 'Departamento Civil', 302);
+
+INSERT INTO `estudante` (`nro_matricula`, `nome`, `idade`, `cod_curso`, `prof_supervisor`, `estudante_conselheiro`) VALUES
+(1, 'Joao da Silva', 25, 4, 1, NULL),
+(9, 'Jose Pinto', 45, 5, 2, 1),
+(10, 'Guilherme ', 30, 6, 1, 9);
+
+
+INSERT INTO `professor` (`nro_matricula`, `nome`, `idade`, `sala`, `especialidade_pesquisa`, `prof_departamento`) VALUES
+(1, 'Andre Almeida', 45, '201', 'Banco de dados', 1),
+(2, 'Joao Silveira', 55, '201', 'Direito Penal', 3),
+(3, 'Pedro Ortiz', 60, '203', 'Construção', 4);
+
+INSERT INTO `projeto` (`nro_projeto`, `nome`, `orgao_financiador`, `data_ini`, `data_fim`, `orcamento`, `professor_pesquisador`) VALUES
+(1, 'Projeto S', 'UDESC', '2023-11-16', '2023-11-30', 1000, 1),
+(3, 'Projeto T', 'UDESC', '2023-02-20', '2023-03-30', 30000, 2),
+(4, 'Projeto H', 'Udesc', '2023-08-06', '2024-05-17', 10000, 3);
+
+
