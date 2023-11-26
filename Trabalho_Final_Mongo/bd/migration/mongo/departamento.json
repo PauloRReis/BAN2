@@ -1,4 +1,2 @@
- {"_id" : "1                       ", "nome" : "Departamento de Tecnologias", "escritorio" : "303"}
- {"_id" : "3                       ", "nome" : "Departamento Direito", "escritorio" : "301"}
- {"_id" : "4                       ", "nome" : "Departamento Civil", "escritorio" : "302"}
-
+[{"_id": { "$oid": "656381deb9bf146b5c0ff1ca"},"nome": "Departamento de Medicina","escritorio": "320"},
+{"_id": {"$oid": "6563a5c0b9bf146b5c0ff1d6"},"nome": "Departamento de Tecnologia","escritorio": "301"}]

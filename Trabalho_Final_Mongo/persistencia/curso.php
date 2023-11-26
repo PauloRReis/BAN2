@@ -23,8 +23,10 @@
     
             $id = $doc["_id"];
             $nome = $doc["nome"];
+            $departamento = $localhost->$departamento->findOne(['_id' => $doc["nro_departamento"]]);
+            //$departamento = $doc["nro_departamento"];
             
-            $rs = array("".$id, $nome);
+            $rs = array("".$id, $nome, (string) $departamento);
             $res["".$id] = $rs;
             
         }
@@ -35,15 +37,11 @@
     }elseif($_POST["op"] == "1"){ //INSERT
         $d = explode("^", $_POST['dados']);
     
-        $dados = ['nome' => $d[0]];
+        $dados = ['nome' => $d[0], 'nro_departamento' => new MongoDB\BSON\ObjectID($d[1])];
 
         $result = $collection->insertOne($dados);
-    
-        $id_curso = $result->getInsertedId();
 
-        $result2 = $localhost->departamento_curso->insertOne(['cd_curso' => new MongoDB\BSON\ObjectID($id_curso), 'nr_depart' => new MongoDB\BSON\ObjectID($d[1])]);
-
-        die($id_curso."^".$d[0]);
+        die($result->getInsertedId()."^".$d[0]."^".$d[1]);
 
     }elseif($_POST["op"] == "2"){ //UPDATE
         $d = explode("^", $_POST['dados']);

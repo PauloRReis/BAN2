@@ -248,26 +248,13 @@ class Sistema {
             type:"POST",
             cache:false,
             success: function(r){
-				console.log(r);
                 const o = JSON.parse(r);
                 var key;
-                var auxEstudante = []; 
-				var acons = undefined;
-				var nome_acons = null;
+
                 for (key in o) {
 					if(o[key] !=""){						
 						var b = o[key];
-						auxEstudante.push(new Estudante(b[0],b[1],b[2],nome_acons,b[4]));
-											
-						acons = sys.getEstudante_Mat(auxEstudante, b[3]);
-						
-						nome_acons = null;
-						if( acons!= undefined){
-							nome_acons = acons.getNome();
-							
-							console.log(nome_acons);
-						}
-						var e = new Estudante(b[0],b[1],b[2],nome_acons,b[4]); 
+						var e = new Estudante(b[0],b[1],b[2],b[3],b[4],b[5]); 
 						sys.estudantes.push(e);
 						
 					}
@@ -305,7 +292,6 @@ class Sistema {
             type:"POST",
             cache:false,
             success: function(r){
-
                 const o = JSON.parse(r);
                 var key;
 				
@@ -354,6 +340,7 @@ class Sistema {
 				// alert("ERROR")
 			},
             success: function(r){
+				console.log(r);
                 const o = JSON.parse(r);
                 var key;
                 for (key in o) {
@@ -396,7 +383,6 @@ class Sistema {
             type:"POST",
             cache:false,
             success: function(r){
-				console.log(r);
                 const o = JSON.parse(r);
                 var key;
 				var opt = "<option value=''>Selecionar..</option>";
@@ -516,8 +502,7 @@ class Sistema {
 	insert(obj){
 		const sys = this;
 		const p = sys.pageAjax;
-		const dados = sys.formataDados(sys.popupativo);		
-
+		const dados = sys.formataDados(sys.popupativo);
 		$.ajax({
             url: url+"/"+p+".php",
             data:"op=1&dados="+dados,

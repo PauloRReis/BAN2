@@ -18,8 +18,6 @@ if($_POST['op'] == "0"){ // SELECT
     $res = array();
     foreach ($cursor as $doc) {
 
-        //var_dump($doc);
-
         $dateI = explode("-", $doc["data_ini"]);
         $dateF = explode("-", $doc["data_fim"]);
         $dateI = $dateI[2]."/".$dateI[1]."/".$dateI[0];
@@ -27,11 +25,11 @@ if($_POST['op'] == "0"){ // SELECT
         
         $id = $doc["_id"];
         $nome = $doc["nome"];
-        $orgao = $doc["orgao"];        
+        $orgao = $doc["orgao_financiador"];        
         $orcamento = $doc["orcamento"];
-        $pesquisador = $doc["pesquisador"];  
+        $pesquisador = $doc["professor_pesquisador"];  
         
-        $rs = array("".$id, $nome, $orgao, $dateI, $dateF, $orcamento, $pesquisador);
+        $rs = array("".$id, $nome, $orgao, $dateI, $dateF, $orcamento, (string) $pesquisador);
         $res["".$id] = $rs;
         
     }
@@ -47,7 +45,7 @@ if($_POST['op'] == "0"){ // SELECT
     $dateI = $dateI[2]."-".$dateI[1]."-".$dateI[0];
     $dateF = $dateF[2]."-".$dateF[1]."-".$dateF[0];
 
-    $dados = ['nome' => $d[0], 'orgao' => $d[1], 'data_ini' => $dateI, 'data_fim' => $dateF, 'orcamento' => $d[4], 'pesquisador' => $d[5]];        
+    $dados = ['nome' => $d[0], 'orgao_financiador' => $d[1], 'data_ini' => $dateI, 'data_fim' => $dateF, 'orcamento' => $d[4], 'professor_pesquisador' => new MongoDB\BSON\ObjectID($d[5])];        
 
     $result = $collection->insertOne($dados);
 

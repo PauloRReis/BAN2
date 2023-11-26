@@ -23,15 +23,12 @@ if($_POST['op'] == "0"){ //SELECT
         $id = $doc["_id"];
         $nome = $doc["nome"];
         $idade = $doc["idade"];
-        $ori = isset($doc["aconselhador"]) ? $doc["aconselhador"]."" : "NULL";
-        
-        $cursor2 = $localhost->turma->find(['_id' => $doc["cd_turma"]]);
-        $turma = ""; 
-        foreach ($cursor2 as  $doc2){
-            $turma = $doc2['ano']."/".$doc2['semestre'];
-        }
+        $cod_curso = $doc["cod_curso"];
+        $prof_supervisor = $doc["prof_supervisor"];
+        $ori = $doc["estudante_conselheiro"];
 
-        $rs = array("".$id, $nome, $idade, $ori, $turma);
+
+        $rs = array("".$id, $nome, $idade, (string) $cod_curso, (string) $prof_supervisor, (string) $ori);
         $res["".$id] = $rs;
         
     }
@@ -42,19 +39,14 @@ if($_POST['op'] == "0"){ //SELECT
 }elseif($_POST["op"] == "1"){ //INSERT
     $d = explode("^", $_POST['dados']);
 
-    $dados = ['nome' => $d[0], 'idade' => $d[1], 'cd_turma' => new MongoDB\BSON\ObjectID($d[2])];
+    $dados = ['nome' => $d[0], 'idade' => $d[1], 'cod_curso' => new MongoDB\BSON\ObjectID($d[2]), 'prof_supervisor' => new MongoDB\BSON\ObjectID($d[3]), 'estudante_conselheiro' => new MongoDB\BSON\ObjectID($d[4])];
 
-    if($d[3]!=""){
-        $dados['aconselhador'] = $d[3];
-    }
-    $result = $collection->insertOne($dados);
-
-    die($result->getInsertedId()."^".$d[0]."^".$d[1]."^".$d[3]."^".$d[2]);
+    die($result->getInsertedId()."^".$d[0]."^".$d[1]."^".$d[2]."^".$d[3]."^".$d[4]);
 
 }elseif($_POST["op"] == "2"){ //UPDATE
-    $d = explode("^", $_POST['dados']);
+    //$d = explode("^", $_POST['dados']);
 
-    $dados = [ 'nome' => $d[0], 'idade' => $d[1]];
+    //$dados = [ 'nome' => $d[0], 'idade' => $d[1]];
 
     //$collection->updateOne(['_id'=> new MongoDB\BSON\ObjectID($_POST['m']) ],[ '$set' => $dados]);
 }

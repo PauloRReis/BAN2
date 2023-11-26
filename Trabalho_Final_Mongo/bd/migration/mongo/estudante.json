@@ -1,4 +1,3 @@
- {"_id" : "1                       ", "nome" : "Joao da Silva", "idade" : 25, "cod_curso" : "4                       ", "prof_supervisor" : "1                       ", "estudante_conselheiro" : null}
- {"_id" : "9                       ", "nome" : "Jose Pinto", "idade" : 45, "cod_curso" : "5                       ", "prof_supervisor" : "2                       ", "estudante_conselheiro" : "1                       "}
- {"_id" : "10                      ", "nome" : "Guilherme ", "idade" : 30, "cod_curso" : "6                       ", "prof_supervisor" : "1                       ", "estudante_conselheiro" : "9                       "}
+ {"_id" : { "$oid": "6563ad733fe2dd4e4615d7b6"}, "nome" : "Joao da Silva", "idade" : 25, "cod_curso" : {"$oid":"6563a5473fe2dd4e4615d7b2"}, "prof_supervisor" : {"$oid": "6563ade5b9bf146b5c0ff1e3"}, "estudante_conselheiro" : null}
+ 
 
