@@ -23,7 +23,7 @@ if($_POST['op'] == "0"){ // SELECT
         $idade = $doc["idade"];
         $sala = $doc["sala"];
         $espec = $doc["especialidade_pesquisa"];
-        $prof_departamento = $doc["prof_departamento"];
+        $prof_departamento = $localhost->departamento->findOne(['_id' => $doc["prof_departamento"]], ['projection' => ['nome' => 1]])['nome'];
         
         $rs = array("".$id, $nome, $idade, $sala, $espec, (string) $prof_departamento);
         $res["".$id] = $rs;

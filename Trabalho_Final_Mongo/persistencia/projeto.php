@@ -27,7 +27,7 @@ if($_POST['op'] == "0"){ // SELECT
         $nome = $doc["nome"];
         $orgao = $doc["orgao_financiador"];        
         $orcamento = $doc["orcamento"];
-        $pesquisador = $doc["professor_pesquisador"];  
+        $pesquisador = $localhost->professor->findOne(['_id' => $doc["professor_pesquisador"]], ['projection' => ['nome' => 1]])['nome'];  
         
         $rs = array("".$id, $nome, $orgao, $dateI, $dateF, $orcamento, (string) $pesquisador);
         $res["".$id] = $rs;

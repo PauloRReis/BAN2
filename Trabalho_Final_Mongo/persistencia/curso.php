@@ -19,11 +19,12 @@
     if($_POST['op'] == "0"){ //SELECT
         $cursor = $collection->find([]);
         $res = array();
+
         foreach ($cursor as $doc) {
     
             $id = $doc["_id"];
             $nome = $doc["nome"];
-            $departamento = $localhost->$departamento->findOne(['_id' => $doc["nro_departamento"]]);
+            $departamento = $localhost->departamento->findOne(['_id' => $doc["nro_departamento"]], ['projection' => ['nome' => 1]])['nome'];
             //$departamento = $doc["nro_departamento"];
             
             $rs = array("".$id, $nome, (string) $departamento);

@@ -23,8 +23,8 @@ if($_POST['op'] == "0"){ //SELECT
         $id = $doc["_id"];
         $nome = $doc["nome"];
         $idade = $doc["idade"];
-        $cod_curso = $doc["cod_curso"];
-        $prof_supervisor = $doc["prof_supervisor"];
+        $cod_curso = $localhost->curso->findOne(['_id' => $doc["cod_curso"]], ['projection' => ['nome' => 1]])['nome'];
+        $prof_supervisor = $localhost->professor->findOne(['_id' => $doc["prof_supervisor"]], ['projection' => ['nome' => 1]])['nome'];
         $ori = $doc["estudante_conselheiro"];
 
 

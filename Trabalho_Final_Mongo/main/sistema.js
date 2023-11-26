@@ -248,6 +248,7 @@ class Sistema {
             type:"POST",
             cache:false,
             success: function(r){
+				console.log(r);
                 const o = JSON.parse(r);
                 var key;
 
@@ -340,7 +341,6 @@ class Sistema {
 				// alert("ERROR")
 			},
             success: function(r){
-				console.log(r);
                 const o = JSON.parse(r);
                 var key;
                 for (key in o) {
