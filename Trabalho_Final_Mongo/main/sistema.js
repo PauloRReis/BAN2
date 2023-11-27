@@ -263,7 +263,7 @@ class Sistema {
 
 				const local = $("#estudante");
 
-				sys.createTable(local, ["id", "nome", "idade", "curso", "supervisor", "aconselhador"], sys.estudantes, ["5%", "20%", "15%", "10%", "20%", "20%"]);							
+				sys.createTable(local, ["id", "nome", "idade", "curso", "supervisor", "aconselhador"], sys.estudantes, ["20%", "20%", "10%", "10%", "20%", "20%"]);							
 
 				sys.setEventEstudantes(local);
 
@@ -305,7 +305,7 @@ class Sistema {
 				}
 
 				const local = $("#professor");
-				sys.createTable(local, ["id", "nome", "idade", "sala", "especialidade", "departamento"], sys.professores, ["5%", "25%", "10%", "10%", "30%", "20%"]);
+				sys.createTable(local, ["id", "nome", "idade", "sala", "especialidade", "departamento"], sys.professores, ["20%", "20%", "10%", "10%", "20%", "20%"]);
 				
 				sys.setEventProfessor(local);
 
@@ -397,7 +397,7 @@ class Sistema {
 				}
 	
 				const local = $("#departamento");
-				sys.createTable(local, ["id", "nome", "escritorio"], sys.departamentos, ["10%", "45%", "45%"]);
+				sys.createTable(local, ["id", "nome", "escritorio"], sys.departamentos, ["30%", "35%", "35%"]);
 				
 				sys.setEventDepartamento(local);
 
@@ -429,7 +429,7 @@ class Sistema {
 					}
 				}
 				const local = $("#projeto");
-				sys.createTable(local, ["id", "nome", "orgão", "data inicial", "data final", "orçamento", "pesquisador"], sys.projetos, ["10%", "20%", "10%", "10%", "10%" , "10%" ,"30%"]);
+				sys.createTable(local, ["id", "nome", "orgão", "data inicial", "data final", "orçamento", "pesquisador"], sys.projetos, ["20%", "20%", "10%", "10%", "10%" , "10%" ,"20%"]);
 				
 				sys.setEventProjeto(local);
             }
@@ -534,7 +534,7 @@ class Sistema {
 					a = new Professor(d[0], d[1], d[2],d[3],d[4]);
 					sys.professores.push(a);
 					const local = $("#professor");
-					sys.createTable(local, ["id", "nome", "idade", "sala", "especialidade", "departamento"], sys.professores, ["5%", "25%", "10%", "10%", "25%", "10%"]);
+					sys.createTable(local, ["id", "nome", "idade", "sala", "especialidade", "departamento"], sys.professores, ["20%", "20%", "10%", "10%", "20%", "20%"]);
 					sys.setEventProfessor(local);
 					var op = sys.createOptionProfessor();
 					$("#pesquisadorAll").html(op);
@@ -544,7 +544,7 @@ class Sistema {
 					a = new Projeto(d[0], d[1], d[2],d[3],d[4],d[5],d[6]);
 					sys.projetos.push(a);
 					const local = $("#projeto");
-					sys.createTable(local, ["id", "nome", "orgão", "data inicial", "data final", "orçamento", "pesquisador"], sys.projetos, ["10%", "20%", "10%", "10%", "10%" , "10%" ,"30%"]);
+					sys.createTable(local, ["id", "nome", "orgão", "data inicial", "data final", "orçamento", "pesquisador"], sys.projetos, ["20%", "20%", "10%", "10%", "10%" , "10%" ,"20%"]);
 					sys.setEventProjeto(local);
 					
 				}else if(p == "estudante"){

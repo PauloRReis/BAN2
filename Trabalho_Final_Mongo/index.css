@@ -48,7 +48,7 @@ ul {list-style: none;}
 .u-content-page {
 	width: 100%;
 	height: 100%;
-	overflow: auto;
+	overflow:hidden;
 	display: none;
 }
 
