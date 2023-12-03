@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "6563a5473fe2dd4e4615d7b2"
+  },
+  "nome": "Medicina",
+  "nro_departamento": {
+    "$oid": "656381deb9bf146b5c0ff1ca"
+  }
+},
+{
+  "_id": {
+    "$oid": "6563a9dab9bf146b5c0ff1e0"
+  },
+  "nome": "Computação",
+  "nro_departamento": {
+    "$oid": "6563a5c0b9bf146b5c0ff1d6"
+  }
+},
+{
+  "_id": {
+    "$oid": "6563aa2eb9bf146b5c0ff1e2"
+  },
+  "nome": "TADS",
+  "nro_departamento": {
+    "$oid": "6563a5c0b9bf146b5c0ff1d6"
+  }
+}]

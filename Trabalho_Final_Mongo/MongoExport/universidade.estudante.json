@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "6563ad733fe2dd4e4615d7b6"
+  },
+  "nome": "Joao da Silva",
+  "idade": 25,
+  "cod_curso": {
+    "$oid": "6563a5473fe2dd4e4615d7b2"
+  },
+  "prof_supervisor": {
+    "$oid": "6563b225b9bf146b5c0ff1e8"
+  },
+  "estudante_conselheiro": null
+}]

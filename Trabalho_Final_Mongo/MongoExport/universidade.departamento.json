@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "656381deb9bf146b5c0ff1ca"
+  },
+  "nome": "Departamento de Medicina",
+  "escritorio": "320"
+},
+{
+  "_id": {
+    "$oid": "6563a5c0b9bf146b5c0ff1d6"
+  },
+  "nome": "Departamento de Tecnologia",
+  "escritorio": "301"
+}]

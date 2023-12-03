@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "6563ab733fe2dd4e4615d7b3"
+  },
+  "nome": "Andre Almeida",
+  "idade": 45,
+  "sala": "201",
+  "especialidade_pesquisa": "Banco de dados",
+  "prof_departamento": {
+    "$oid": "6563a5c0b9bf146b5c0ff1d6"
+  }
+},
+{
+  "_id": {
+    "$oid": "6563b225b9bf146b5c0ff1e8"
+  },
+  "nome": "Pedro",
+  "idade": "44",
+  "sala": "202",
+  "especialidade_pesquisa": "Ortopedia",
+  "prof_departamento": {
+    "$oid": "656381deb9bf146b5c0ff1ca"
+  }
+}]

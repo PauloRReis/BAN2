@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "6563ac643fe2dd4e4615d7b5"
+  },
+  "nome": "Projeto S",
+  "orgao_financiador": "UDESC",
+  "data_ini": "2023-11-16",
+  "data_fim": "2023-11-30",
+  "orcamento": 1000,
+  "professor_pesquisador": {
+    "$oid": "6563ab733fe2dd4e4615d7b3"
+  }
+},
+{
+  "_id": {
+    "$oid": "6563b230b9bf146b5c0ff1e9"
+  },
+  "nome": "Projeto H",
+  "orgao_financiador": "CCT",
+  "data_ini": "2010-10-10",
+  "data_fim": "2012-12-20",
+  "orcamento": "4000",
+  "professor_pesquisador": {
+    "$oid": "6563b225b9bf146b5c0ff1e8"
+  }
+}]
