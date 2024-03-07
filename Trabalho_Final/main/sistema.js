@@ -381,33 +381,6 @@ class Sistema {
 				sys.createTable(local, ["id", "nome", "idade", "aconselhador", "turma"], sys.estudantes, ["5%", "30%", "15%", "30%", "20%"]);							
 
 				sys.setEventEstudantes(local);
-
-				$("#turmaAll").find("select").on("change",function(){
-					const v = $(this).val();
-					var opt = "";
-					var opt1 = "<option value=''>Selecionar</option>";
-					var key;
-					for (key in o) {
-						var b = o[key];                                        					
-						if(b[4] < v){						
-							//var e = new Estudante(b[0],b[1],b[2],b[3],b[4]); 
-							opt += "<option value='"+b[0]+"'>"+b[1]+"</option>";
-						}
-					}
-					const ac = $("#aconselhaAll");
-					const select = ac.find("select")
-					select.html(opt1);						
-					select.val("");
-					ac.hide();
-					if(opt == ""){
-						
-					}else{
-						select.append(opt);
-						ac.show();
-					}
-
-					
-				})
 			}
         });
     }
